@@ -1,0 +1,62 @@
+from tkinter import * #libreria bonisz :3
+from tkinter import messagebox
+
+root=Tk() #crear ventana
+
+root.title("Bee - TechnovaSoft 1.0") #Nombre
+root.geometry("930x520") #tamaño de la ventana o 720x480
+root.config(bg="#D8D8D8") #color principal #2E2E2E
+#logoimg=PhotoImage(file="fond.png")
+#etLogo=Label(root, image=logoimg)
+#etLogo.pack(side=TOP, padx=10, pady=50)
+#fonegap
+
+#boton1=Button(root, text="Inicio")
+#boton1.pack(side=LEFT, padx=5, pady=5)
+
+barraMenu=Menu(root) #barra
+mnuInicio=Menu(barraMenu) #menus
+mnuIndice=Menu(barraMenu)
+mnuActiv=Menu(barraMenu)
+mnuAyuda=Menu(barraMenu)
+####
+def informacion():
+	messagebox.showinfo("Información", "Software desarrollado por TechnovaSoft.® 2015\n  •Base de datos:\n    Ernesto Ruíz\n    Alejandro Parra\n  •Interfaz gráfica:\n    Mauicio Reyes\n    Azael Rodríguez\n  •Algoritmia:\n    César Rivera\n    Carlos Hernandez")
+
+####  Incio
+mnuInicio.add_command(label="Probabilidad y estadistica")
+mnuInicio.add_command(label="Información", command=informacion)
+mnuInicio.add_separator()
+mnuInicio.add_command(label="Salir", command=root.destroy)
+####  Indice
+mnuIndice.add_command(label="1 - Conceptos generales")
+mnuIndice.add_command(label="2 - Medidas de tendencia central")
+mnuIndice.add_command(label="3 - Medidas de dispersión")
+mnuIndice.add_command(label="4 - Medidas de forma")
+mnuIndice.add_command(label="5 - Medidas de correlación")
+mnuIndice.add_command(label="6 - Teoría de conjuntos")
+mnuIndice.add_command(label="7 - Técnicas de conteo")
+mnuIndice.add_command(label="8 - Probabilidad para eventos")
+####  Actividades
+mnuActiv.add_command(label="Bloque 1")
+mnuActiv.add_command(label="Bloque 2")
+mnuActiv.add_command(label="Bloque 3")
+mnuActiv.add_command(label="Bloque 4")
+mnuActiv.add_command(label="Bloque 5")
+mnuActiv.add_command(label="Bloque 6")
+mnuActiv.add_command(label="Bloque 7")
+mnuActiv.add_command(label="Bloque 8")
+####  Ayuda
+mnuAyuda.add_command(label="Ver Ayuda")
+####
+barraMenu.add_cascade(label="Inicio", menu=mnuInicio)
+barraMenu.add_cascade(label="Índice", menu=mnuIndice)
+barraMenu.add_cascade(label="Actividades", menu=mnuActiv)
+barraMenu.add_cascade(label="Ayuda", menu=mnuAyuda)
+root.config(menu=barraMenu)
+
+
+
+
+root.mainloop() #comienzo de evento principal
+
