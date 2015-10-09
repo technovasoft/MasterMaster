@@ -30,17 +30,9 @@ pb.pack()
 pb.start()
 #####################Apartir de aqui comienza todo el programa
 
-root.title("Bee 1.0") #Nombre
+root.title("BeesSoft") #Nombre
 root.geometry("930x520") #tamaño de la ventana o 720x480
 root.config(bg="#1C1C1C") #color principal #2E2E2E  #D8D8D8  #1C1C1C
-#logoimg=PhotoImage(file="logo.png")
-#etLogo=Label(root, image=logoimg)
-#etLogo.pack(side=TOP, padx=10, pady=50)
-#fonegap
-
-
-#boton1=Button(root, text="Inicio")
-#boton1.pack(side=LEFT, padx=5, pady=5)
 
 barraMenu=Menu(root) #barra de menu
 mnuInicio=Menu(barraMenu) #menus
@@ -52,29 +44,26 @@ mnuAyuda=Menu(barraMenu)
 ####
 #estas son ventanitas de dialogo#
 ####  Incio
-def ProbyEsta():
-	#text=Label(root, text="Introducción:", fg="#DF7401", bg="#1C1C1C", font=("Arial", 16), padx=20, pady=20)
-	#text1=Label(root, text="El término probabilidad se refiere al estudio del azar y la incertidumbre. En aquellas situaciones en las cuales se puede producir uno o varios resultados posibles, la teoría de la probabilidad proveé\nmétodos para cuantificar la oportunidad de ocurrencia de cada uno de ellos.", fg="white", bg="#1C1C1C", font=("Arial", 12))
-	#text2=Label(root, text="La Estadística alude al enorme interés de esta rama matemática para los asuntos del Estado, y su introducción en el mundo científico se debe a la importancia indiscutible para el desarrollo de las ciencias sociales y humanas. De ahí la importancia que se da en las currículas actuales de Bachillerato.", justify=LEFT, fg="white", bg="#1C1C1C", font=("Arial", 12), padx=20, pady=20)
-	#text.pack(side=TOP, anchor=NW, expand=YES) <--IMPORTANTE
-	T1=Text(root, height=5, width=80, fg="#DF7401", bg="#1C1C1C", bd=0, font=("Arial", 16), padx=20, pady=40)
-	T1.insert(END, "Introducción")
-	T1.pack(anchor=NW, expand=YES)
+def Intro():
+	T=Text(root, height=5, width=90, fg="#8181F7", bg="#1C1C1C", bd=0, font=("Arial", 16, "bold"), padx=20)
+	T.insert(END, "\n\nIntroducción")
+	T.grid(row=1, column=0, sticky=W)
+	T.config(state=DISABLED)
+
+	T1=Text(root, height=5, width=90, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12), padx=20)
+	T1.insert(END, "El término probabilidad se refiere al estudio del azar y la incertidumbre. En aquellas situaciones en las cuales se puede producir uno o varios resultados posibles, la teoría de la probabilidad proveé métodos para cuantificar la oportunidad de ocurrencia de cada uno de ellos.")
+	T1.grid(row=2, column=0, sticky=W)
 	T1.config(state=DISABLED)
 
-	T=Text(root, height=5, width=80, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12), padx=20)
-	T.insert(END, "El término probabilidad se refiere al estudio del azar y la incertidumbre. En aquellas situaciones en las cuales se puede producir uno o varios resultados posibles, la teoría de la probabilidad proveé métodos para cuantificar la oportunidad de ocurrencia de cada uno de ellos.")
-	T.pack(anchor=NW, expand=YES)
-	T.config(state=DISABLED)
-	#text1.pack(side=TOP, anchor=NW, expand=YES)
-	#text1.grid(row=2, column=0, sticky=W)
-	#text2.grid(row=3, column=0, sticky=W)
-	#text1.pack()
+	T2=Text(root, height=5, width=90, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12), padx=20)
+	T2.insert(END, "La Estadística alude al enorme nterés de esta rama matemática para los asuntos del Estado, y su introducción en el mundo científico se debe a la importancia indiscutible para el desarrollo de las ciencias sociales y humanas. De ahí la importancia que se da en las currículas actuales de Bachillerato.")
+	T2.grid(row=3, column=0, sticky=W)
+	T2.config(state=DISABLED)
 
 def informacion():
 	messagebox.showinfo("Información", "Software desarrollado por TechnovaSoft.® 2015\n  •Base de datos:\n    Ernesto Ruíz\n    Alejandro Parra\n  •Interfaz gráfica:\n    Mauicio Reyes\n    Azael Rodríguez\n  •Algoritmia:\n    César Rivera\n    Carlos Hernandez")
 
-mnuInicio.add_command(label="Probabilidad y estadistica", command=ProbyEsta)
+mnuInicio.add_command(label="Introducción", command=Intro)
 mnuInicio.add_command(label="Información", command=informacion)
 mnuInicio.add_separator()
 mnuInicio.add_command(label="Salir", command=root.destroy)
@@ -115,8 +104,4 @@ barraMenu.add_cascade(label="Actividades", menu=mnuActiv)
 barraMenu.add_cascade(label="Ayuda", menu=mnuAyuda)
 root.config(menu=barraMenu)
 
-
-
-
 root.mainloop() #comienzo de evento principal
-
