@@ -13,7 +13,7 @@ def ejecutar(f):
 	root.after(100, f)
 
 v1=Toplevel(root)
-v1.title("Bee 1.0")
+v1.title("BeeSoFt")
 v1.geometry("450x180")
 v1.config(bg="#1C1C1C")
 v1.protocol("WM_DELETE_WINDOW", "onexit")
@@ -61,7 +61,7 @@ def Intro():
 	T2.config(state=DISABLED)
 
 def informacion():
-	messagebox.showinfo("Información", "Software desarrollado por TechnovaSoft.® 2015\n  •Base de datos:\n    Ernesto Ruíz\n    Alejandro Parra\n  •Interfaz gráfica:\n    Mauicio Reyes\n    Azael Rodríguez\n  •Algoritmia:\n    César Rivera\n    Carlos Hernandez")
+	messagebox.showinfo("Información", "Software desarrollado por TechnovaSoft.® 2015\n  •Base de datos:\n    Ernesto Ruíz\n    Alejandro Parra\n  •Interfaz gráfica:\n    Mauicio Reyes\n    Azael Rodríguez\n    Karen Ortis\n  •Algoritmia:\n    César Rivera\n    Carlos Hernandez\n    Jorge Salinas")
 
 mnuInicio.add_command(label="Introducción", command=Intro)
 mnuInicio.add_command(label="Información", command=informacion)
@@ -90,11 +90,17 @@ def Ayuda():
 	ayuda=Tk()
 	ayuda.title("Ayuda")
 	ayuda.geometry("320x480")
+	ayuda.resizable(0,0)
 	ayuda.config(bg="white")
-	text=Label(ayuda, text="Ayuda de Bee", fg="#2E2E2E", bg="white", font=("Arial", 14), padx=20, pady=20)
-	text1=Label(ayuda, text="", fg="#2E2E2E", bg="white", font=("Arial", 12), padx=20)
-	text.pack()
-	text1.pack()
+	Tayuda=Text(ayuda, height=5, width=90, fg="black", bg="white", bd=0, font=("Arial", 16, "bold italic"), padx=20)
+	Tayuda.insert(END, "\n\nAyuda")
+	Tayuda.grid(row=1, column=0, sticky=W)
+	Tayuda.config(state=DISABLED)
+	Tayuda2=Text(ayuda, height=100, width=40, fg="black", bg="white", bd=0, font=("Arial", 10), padx=20)
+	Tayuda2.insert(END, "BeeSoft v. 1.0 BETA es software libre para los sistemas operativos Windows, MacOS, y Linux. \n\n•Requerimientos mínimos:\n512 Gbs. de memoria RAM, 30 Mbs. de espcio en disco duro, procesador Intel Pentium 4 o versiones posteriores; \n-Mac OS X 10.6 o posterior; \n-Ubuntu 12.04, Fedora Linux 20 o posteriores; \n-Windows 7 O posterior. \n\n•Resultados: \nCuando se ingresan datos dentro de las cajas de texto y arroja un resultado erroneo o no arroja un resultado es necesario verificar que se haya ingresado un dato válido, si persiste el problema, reinstale el software.\n\n¡Gracias por usar BeeSoft! :)")
+	Tayuda2.grid(row=2, column=0, sticky=W)
+	Tayuda2.config(state=DISABLED)
+
 
 mnuAyuda.add_command(label="Ver Ayuda", command=Ayuda)
 ####
