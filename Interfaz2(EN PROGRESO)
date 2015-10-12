@@ -1,0 +1,65 @@
+##<---------------Librerías.
+from tkinter import * ###Librería Básica.
+import tkinter ###Librería que aplica el contorno de ventana.
+from tkinter import messagebox ###Librería para enmarcar texto
+from tkinter import ttk ###Librería para la barra de carga.
+###<-------------Termina declaración de librerías.
+
+
+window = Tk() ###<----Inicio de ventana, CON ESTO & MAINLOOP EJERCE LA VENTANA.
+
+###<------------VENTANA DE CARGA------------------>
+
+
+def show(window):
+	return window.deiconify() ###Ejerce ventana de carga.
+def hide(window):
+	return window.withdraw() ###Oculta ventana de carga.
+def run(f):
+	window.after(100,f)
+
+charge=Toplevel(window)
+charge.title("Cargando...")
+charge.geometry("450x180")
+charge.config(bg="#1C1C1C")
+charge.protocol("WM_DELETE_WINDOW", "onexit")
+charge.resizable(0,0)
+
+hide(window)
+def cerrar_carga():
+	run(hide(charge))
+	run(show(window))
+charge.after(4000,cerrar_carga)
+Label(charge, text="Aguanta morro...", bg="#1C1C1C", fg="white", font=("arial",(16)), padx="80", pady="50").pack()
+pb=ttk.Progressbar(charge, orient="horizontal", length=440, mode="determinate")
+pb.pack()
+pb.start()
+
+###<--------------Termina VENTANA DE CARGA------------>
+
+###<-----Propiedades estéticas de ventana---------------->
+frame = tkinter.Frame(window, relief=GROOVE, bd=3) ###Contorno de ventana "bd" es el que modifica el grosor del contorno.
+frame.pack(fill=BOTH, expand=20)
+frame.config(bg="#336666")
+###<-----Terminan propiedades estéticas de ventana.------------->
+
+
+###<-----Propiedades distributivas de la ventana----------------->
+window.title("BeeSoft")###Titulo de la ventana.
+window.geometry("930x520")###Propiedades proporcionales de la ventana.
+
+
+###Botones
+butINI = tkinter.Button(frame,text="Inicio")
+butIND = tkinter.Button(frame,text="Índice")
+butACT = tkinter.Button(frame,text="Actividades")
+butAYU = tkinter.Button(frame,text="Ayuda")
+
+
+###Propiedades de los botones
+butINI.place(bordermode=OUTSIDE, height=30, width=40, y=5, x=438)
+butIND.place(bordermode=OUTSIDE, height=30, width=40, y=5, x=481)			###Acomódo basado en plano cartesiano.
+butACT.place(bordermode=OUTSIDE, height=30, width=75, y=5, x=360)
+butAYU.place(bordermode=OUTSIDE, height=30, width=40, y=5, x=524)
+###<--------Terminan propiedades distributivas de la ventana------------>
+window.mainloop()
