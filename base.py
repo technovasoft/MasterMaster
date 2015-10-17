@@ -1,6 +1,7 @@
 from tkinter import * #libreria bonisz :3
 from tkinter import messagebox #libreria para todos los messageBox
 from tkinter import ttk #Libreria para barra de progreso(cargando)
+import os #Libreria para comandos del sistema (linux, macx, windios)
 
 root=Tk() #crear ventana
 
@@ -32,14 +33,12 @@ pb=ttk.Progressbar(v1, orient="horizontal", length=440, mode="determinate")
 pb.pack()
 pb.start()
 
-
 #####################Apartir de aqui comienza todo el programa
 
 root.title("BeesSoft") #Nombre
 root.geometry("930x520") #tamaño de la ventana o 720x480
 root.config(bg="#1C1C1C") #color principal #2E2E2E  #D8D8D8  #1C1C1C
 bit=root.iconbitmap('imagenes/icon.ico') #icono del programa
-
 
 textintro=Text(root, height=1, width=36, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 22, "bold"), padx=20, pady=40)
 textintro.insert(END, "¡Disponible próximamente para Android!")
@@ -79,7 +78,6 @@ def Intro():
 	T1.grid(row=2, column=0, sticky=W)
 	T1.config(state=DISABLED)
 
-
 def informacion():
 	messagebox.showinfo("Información", "Software desarrollado por TechnovaSoft.® 2015\n  •Base de datos:\n    Ernesto Ruíz\n    Alejandro Parra\n  •Interfaz gráfica:\n    Mauicio Reyes\n    Azael Rodríguez\n    Karen Ortiz\n  •Algoritmia:\n    César Rivera\n    Carlos Hernandez\n    Jorge Salinas")
 
@@ -105,8 +103,8 @@ def bloque2():
 ###NOTA: Dentro de los paréntesis poner la dirección de donde están almacenados cada uno de los Bloques.
 
 ####  Actividades
-mnuActiv.add_command(label="Bloque 1")
-mnuActiv.add_command(label="Bloque 2")
+mnuActiv.add_command(label="Bloque 1",command=bloque1)
+mnuActiv.add_command(label="Bloque 2",command=bloque2)
 mnuActiv.add_command(label="Bloque 3")
 mnuActiv.add_command(label="Bloque 4")
 mnuActiv.add_command(label="Bloque 5")
@@ -132,7 +130,6 @@ def Ayuda():
 	necesario verificar que se haya ingresado un dato válido, si persiste el problema, reinstale el software.\n\n¡Gracias por usar BeeSoft! :)")
 	Tayuda2.grid(row=2, column=0, sticky=W)
 	Tayuda2.config(state=DISABLED)
-
 
 mnuAyuda.add_command(label="Ver Ayuda", command=Ayuda)
 ####
