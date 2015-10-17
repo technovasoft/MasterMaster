@@ -96,6 +96,14 @@ mnuIndice.add_command(label="5 - Medidas de correlación")
 mnuIndice.add_command(label="6 - Teoría de conjuntos")
 mnuIndice.add_command(label="7 - Técnicas de conteo")
 mnuIndice.add_command(label="8 - Probabilidad para eventos")
+
+###Funciones de las acciones en cada botón.
+def bloque1():
+	os.startfile("algoritmia-master\Bloque1.py") ###"os.startfile()"" inicializa y ejecuta el archivo especifícado.
+def bloque2():
+	os.startfile("algoritmia-master\Bloque2.py") ###Éste no sé porque no lo abre.
+###NOTA: Dentro de los paréntesis poner la dirección de donde están almacenados cada uno de los Bloques.
+
 ####  Actividades
 mnuActiv.add_command(label="Bloque 1")
 mnuActiv.add_command(label="Bloque 2")
