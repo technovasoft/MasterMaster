@@ -1,0 +1,96 @@
+# -*- coding: utf-8 -*- 
+from tkinter import * ###Librería principal
+from tkinter import messagebox ###Librería para mensajes de texto
+from tkinter import ttk ###Importar ventanas
+import os
+
+bloque1=Tk() ##Nombre de la ventana
+
+bloque1.title('Bloque1')###Titulo ventana
+bloque1.config(bg="#1C1C1C")###Color ventana 
+bloque1.geometry("600x410")###Dimensión de ventana principal
+bloque1.iconbitmap("../imagenes/icon.ico")
+
+###Propiedades de la ventana
+index=PhotoImage(file="../imagenes/index.png")
+index2=Label(bloque1, image=index, bg="#1C1C1C")
+index2.place(relx=1, rely=1, anchor=CENTER)
+
+T=Text(bloque1, height=1, width=15, fg="#DEDEDE", bg="#1C1C1C", bd=0, font=("Trebuchet", 18, "bold"), padx=230, pady=10)
+T.insert(END, "Bloque 1")
+T.grid(row=1, column=0, sticky=W)
+T.config(state=DISABLED)
+
+T1=Text(bloque1, height=8, width=80, fg="#666666", bg="#1C1C1C", bd=0, font=("Arial", 14), padx=10)
+T1.insert(END, "\nConstruír e interpretar modelos de información y gráficos,\
+	\npor el estudiante aplicando la representación e\
+	\nintepretación de gráficas y distribución de frecuencias\
+	\npara representar situacíons resolviendo los problemas teóricos o ,\
+	\nprácticos de su vida cotidiana y escolar,que le permitan comprender\
+	\ny transformar su realidad.")
+T1.grid(row=2, column=0, sticky=W)
+T1.config(state=DISABLED)
+
+########Barra menu
+barraMenu=Menu(bloque1)
+mnuact=Menu(barraMenu)
+mnuints=Menu(barraMenu)
+mnuay=Menu(barraMenu)
+
+###Pestaña Instrucciones
+def ins():
+ ins=Tk()  
+ ins.title("Instrucciones")
+ ins.geometry("320x480")
+ bit=ins.iconbitmap("../imagenes/icon.ico")
+ ins.resizable(0,0)
+ ins.config(bg="white")
+ Tins=Text(ins, heihgt=1, width=7, fg="black", bg="white", bd=0, font=("Arial", 16, "bold italic"), padx=20, pady=40)
+ Tins=insert(END, "Instrucciones")
+ Tins.grid(row=1, column=0, sticky=W)
+ Tins.config(state=DISABLED)
+ Tins2=Text(ins, height=100, width=40, fg="black", bg="white", bd=0, font=("Arial", 10), padx=20)
+ Tins2.insert(END, "No mamen!!asldklaskdlakdl")
+ Tins2.grid(row=2, column=0, sticky=W)
+ Tins2.config(state=DISABLED)
+
+mnuints.add_command(label="Que hago?", command=ins)
+
+###Pestaña ayuda
+def ayuda():
+	ayuda=Tk()
+	ayuda.title("Ayuda")
+	ayuda.geometry("320x480")
+	bit=ayuda.iconbitmap('../imagenes/icon.ico')
+	ayuda.resizable(0,0)
+	ayuda.config(bg="white")
+	Tayuda=Text(ayuda, height=1, width=7, fg="black", bg="white", bd=0, font=("Arial", 16, "bold italic"), padx=20, pady=40)
+	Tayuda.insert(END, "Ayuda")
+	Tayuda.grid(row=1, column=0, sticky=W)
+	Tayuda.config(state=DISABLED)
+	Tayuda2=Text(ayuda, height=100, width=40, fg="black", bg="white", bd=0, font=("Arial", 10), padx=20)
+	Tayuda2.insert(END, "BeeSoft v. 1.0 BETA es software libre para los sistemas operativos Windows, MacOS, y Linux. \n\n•Requerimientos mínimos:\n512 Mbs. de memoria RAM, \
+	30 Mbs. de espacio en disco duro, procesador Intel Pentium 4 o versiones posteriores; \n-Mac OS X 10.6 o posterior; \n-Ubuntu 12.04, Fedora Linux 20 o posteriores;\
+	\n-Windows 7 O posterior. \n\n•Resultados: \nCuando se ingresan datos dentro de las cajas de texto y arroja un resultado erroneo o no arroja un resultado es \
+	necesario verificar que se haya ingresado un dato válido, si persiste el problema, reinstale el software.\n\n¡Gracias por usar BeeSoft! :) pasando los dos años se pedirá pene")
+	Tayuda2.grid(row=2, column=0, sticky=W)
+	Tayuda2.config(state=DISABLED)
+
+mnuay.add_command(label="ver ayuda", command=ayuda)
+
+###Pestañas de barra de herramientas
+barraMenu.add_cascade(label="Actividades", menu=mnuact)
+barraMenu.add_cascade(label="Instrucciones", menu=mnuints)
+barraMenu.add_cascade(label="Ayuda", menu=mnuay)
+barraMenu.add_command(label="Cerrar", command=bloque1.quit)
+bloque1.config(menu=barraMenu)
+
+###Actividades del bloque1
+mnuact.add_command(label="1.2 Representación e interpreción de gráfica", command=mnuact)
+mnuact.add_command(label="1.4 Distribución de frecuencia", command=mnuact)
+mnuact.add_command(label="1.5 Organización de la información", command=mnuact)
+mnuact.add_command(label="1.6 Elaboración de gráficas con excel", command=mnuact)
+###Aquí comienza el código de algoritmía
+
+###Termina la ventana
+bloque1.mainloop()
