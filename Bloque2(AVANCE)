@@ -1,0 +1,121 @@
+from tkinter import *
+from tkinter import messagebox
+from tkinter import ttk
+import os
+import Cod2
+
+
+bloque1=Tk() #crear ventana
+
+bloque1.title("Bloque 2") #Nombre del bloque
+bloque1.geometry("450x300")
+bloque1.config(bg="#1C1C1C")
+bloque1.iconbitmap("../imagenes/icon.ico")
+
+#Aqui va todo el codigo
+index=PhotoImage(file="../imagenes/index.png")
+index2=Label(bloque1, image=index, bg="#1C1C1C")
+index2.place(relx=1, rely=1, anchor=CENTER)
+
+
+barraMenu=Menu(bloque1) #barra de menu
+mnuTemas=Menu(barraMenu) #menus
+mnuAyuda=Menu(barraMenu)
+mnuCerrar=Menu(barraMenu)
+
+def interfazMedArit():
+   
+    a=float
+    
+
+    msj1=Label(bloque1, text="Ingresa una lista de datos numéricos",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=30)
+    msj1.pack()
+    lista = Entry(bloque1, width=50,textvariable = a)
+    lista.pack()
+    boton1= Button(bloque1, text="Calcular", font=("Arial", 12), command=Cod2.mediaAritmetica)
+    boton1.pack(side=BOTTOM,padx=10, pady=10)
+    result1=Label(bloque1, width=25,fg="white", bg="#1C1C1C",font=("Arial", 10), text="La Media Aritmética es: ")
+    result1.pack()
+    
+    
+    
+def interfazMediana ():
+    a=int
+    b=int
+    c=int
+    d=int
+    d=int
+    e=int
+
+    
+    msj2=Label(bloque1, text="Ingresa 5 números",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=15)
+    msj2.pack()
+    numa= Entry(bloque1,textvariable = a, width=10)
+    numa.pack()
+    numb= Entry(bloque1,textvariable = b, width=10)
+    numb.pack()
+    numc= Entry(bloque1,textvariable = c, width=10)
+    numc.pack()
+    numd= Entry(bloque1,textvariable = d, width=10)
+    numd.pack()
+    nume= Entry(bloque1,textvariable = e, width=10)
+    nume.pack()
+    boton1= Button(bloque1, text="Calcular",font=("Arial", 12), command=Cod2.mediana(a,b,c,d,e))
+    boton1.pack(side=BOTTOM, padx=100, pady=10)
+    result2=Label(bloque1, width=17,fg="white", bg="#1C1C1C",font=("Arial", 10), text="La Mediana es: ")
+    result2.pack()
+    
+    
+def interfazModa ():
+   
+    b=int
+    msj3=Label(bloque1, text="Ingresa una serie de datos numéricos",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=30)
+    msj3.pack()
+    lista2 = Entry(bloque1,textvariable = b, width=50)
+    lista2.pack()
+    boton1= Button(bloque1, text="Calcular",font=("Arial", 12), command=Cod2.moda)
+    boton1.pack(side=BOTTOM,padx=10, pady=10)
+    result3=Label(bloque1, width=20,fg="white", bg="#1C1C1C",font=("Arial", 10), text="La Moda es: ")
+    result3.pack()
+
+def interfazMedGeo():
+   
+    c=int
+    msj4=Label(bloque1, text="Ingresa una serie de datos numéricos",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=30)
+    msj4.pack()
+    lista3 = Entry(bloque1,textvariable = c, width=50)
+    lista3.pack()
+    boton1= Button(bloque1, text="Calcular", font=("Arial", 12), command=Cod2.mediaGeometrica)
+    boton1.pack(side=BOTTOM,padx=10, pady=10)
+    result4=Label(bloque1, width=20,fg="white", bg="#1C1C1C",font=("Arial", 10), text="La Media Geométrica es: ")
+    result4.pack()
+
+mnuTemas.add_command(label="Media Aritmética", command=interfazMedArit)
+mnuTemas.add_command(label="Moda", command=interfazModa)
+mnuTemas.add_command(label="Mediana", command=interfazMediana)
+mnuTemas.add_command(label="Media Geométrica", command=interfazMedGeo)
+
+
+def ayuda ():
+    ayuda=Tk()
+    ayuda.title("Ayuda")
+    ayuda.geometry("450x300")
+    ayuda.config(bg="#1C1C1C")
+    
+mnuAyuda.add_command(label="Ver Ayuda", command=ayuda)
+
+def cerrarVentana():
+    bloque1.withdraw()
+    
+mnuCerrar.add_command(label="Cerrar Ventana", command=cerrarVentana)               
+mnuCerrar.add_command(label="Salir", command=bloque1.destroy)
+
+
+barraMenu.add_cascade(label="Temas", menu=mnuTemas)
+barraMenu.add_cascade(label="Ayuda", menu=mnuAyuda)
+barraMenu.add_cascade(label="Cerrar", menu=mnuCerrar)
+
+
+bloque1.config(menu=barraMenu)
+
+bloque1.mainloop()
