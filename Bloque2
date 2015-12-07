@@ -23,14 +23,14 @@ mnuAyuda=Menu(barraMenu)
 mnuCerrar=Menu(barraMenu)
 def limpiar():
     limpiar=msj1.destroy()
-##    limpiar=lista=destroy()
-##    limpiar=boton1=destroy()
-##    limpiar=result1=destroy()
-##    limpiar=msj2=destroy()
-##    limpiar=boton1=destroy()
-##    limpiar=boton1=destroy()
-##    limpiar=boton1=destroy()
-##    limpiar=boton1=destroy()
+    limpiar=lista.destroy()
+    limpiar=boton1.destroy()
+    limpiar=result1.destroy()
+    limpiar=msj2.destroy()
+    limpiar=boton1.destroy()
+    limpiar=boton1.destroy()
+    limpiar=boton1.destroy()
+    limpiar=boton1.destroy()
     
 def interfazMedArit():
    
@@ -122,6 +122,7 @@ mnuCerrar.add_command(label="Salir", command=bloque2.destroy)
 
 
 barraMenu.add_cascade(label="Temas", menu=mnuTemas)
+barraMenu.add_command(label="Limpiar", command=limpiar)
 barraMenu.add_cascade(label="Ayuda", menu=mnuAyuda)
 barraMenu.add_cascade(label="Cerrar", menu=mnuCerrar)
 
