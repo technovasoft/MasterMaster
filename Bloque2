@@ -55,7 +55,7 @@ def interfazMedArit():
                     labelresultado=Label(text=resultado, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
                     return
             lbl=Label(bloque2, text="Media Aritmética",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=10).pack()
-            lbl1=Label(bloque2, text="Ingresa 5 datos numericos:", fg="white", bg="#1C1C1C", bd=15, font=("Arial", 12)).pack()
+            lbl1=Label(bloque2, text="Ingresa 5 datos numéricos:", fg="white", bg="#1C1C1C", bd=15, font=("Arial", 12)).pack()
             dato1=Entry(textvariable = a, width=25).pack()
             dato2=Entry(textvariable = b, width=25).pack()
             dato3=Entry(textvariable = c, width=25).pack()
@@ -125,7 +125,7 @@ def interfazMedGeo():
             return
 
     lbl=Label(bloque2, text="Media Geometrica",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=10).pack()
-    lbl2=Label(bloque2, text="Ingresa 5 números",fg="white", bg="#1C1C1C",font=("Arial", 12), bd=15).pack()
+    lbl2=Label(bloque2, text="Ingresa 5 datos numéricos",fg="white", bg="#1C1C1C",font=("Arial", 12), bd=15).pack()
     num1= Entry(bloque2,textvariable = a, width=15).pack()
     num2= Entry(bloque2,textvariable = b, width=15).pack()
     num3= Entry(bloque2,textvariable = c, width=15).pack()
@@ -160,7 +160,7 @@ def interfazMedArm():
             return
 
     lbl=Label(bloque2, text="Media Armónica",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=10).pack()
-    lbl2=Label(bloque2, text="Ingresa 5 números",fg="white", bg="#1C1C1C",font=("Arial", 12), bd=15).pack()
+    lbl2=Label(bloque2, text="Ingresa 5 datos numéricos",fg="white", bg="#1C1C1C",font=("Arial", 12), bd=15).pack()
     num1= Entry(bloque2,textvariable = a, width=15).pack()
     num2= Entry(bloque2,textvariable = b, width=15).pack()
     num3= Entry(bloque2,textvariable = c, width=15).pack()
@@ -186,7 +186,7 @@ def instrucciones ():
     Tinst.grid(row=1, column=0, sticky=W)
     Tinst.config(state=DISABLED)
     Tinst2=Text(instrucciones, height=100, width=40, fg="black", bg="white", bd=0, font=("Arial", 10), padx=20)
-    Tinst2.insert(END, "En caso de no obtener un resultado al dar clic \n sobre el boton 'Calcular', verifique haber introducido un  caracter vádilo ó número.")
+    Tinst2.insert(END, "En caso de no obtener un resultado al dar clic \n sobre el botón 'Calcular', verifique haber introducido un  caractér vádilo ó número.")
     Tinst2.grid(row=2, column=0, sticky=W)
     Tinst2.config(state=DISABLED)
     
