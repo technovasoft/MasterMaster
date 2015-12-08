@@ -1,0 +1,77 @@
+# -*- coding: utf-8 -*- 
+from tkinter import *
+from tkinter import messagebox
+from tkinter import ttk
+import os
+
+bloque1=Tk() #crear ventana
+bloque1.title("Bloque 7 -  Técnicas de conteo") #Nombre del bloque
+bloque1.geometry("450x300")
+bloque1.config(bg="#1C1C1C")
+
+index=PhotoImage(file="../imagenes/index.png")
+index2=Label(bloque1, image=index, bg="#1C1C1C")
+index2.place(relx=1, rely=1, anchor=CENTER)
+
+########Barra menu
+barraMenu=Menu(bloque1)
+mnuact=Menu(barraMenu)
+mnuints=Menu(barraMenu)
+mnuay=Menu(barraMenu)
+
+
+def tem1():
+	a=0
+
+	def calcular1():
+		labelcalcular=Label(text=a, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
+
+	labelcito=Label(text="Ingersa los datos", fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
+	entricito=Entry(textvariable = a, width=40).pack()
+	butoncito=Button(text="Calcular", font=("Arial", 10), command=calcular1).pack()
+
+def tem2():
+	a=0
+
+def tem3():
+	a=0
+
+def tem4():
+	a=0
+
+def tem5():
+	a=0
+
+def tem6():
+	a=0
+
+def ayuda():
+	ayuda=Tk()
+	ayuda.title("Instrucciones")
+	ayuda.geometry("320x320")
+	ayuda.resizable(0,0)
+	ayuda.config(bg="white")
+	Tayuda=Text(ayuda, height=1, width=7, fg="black", bg="white", bd=0, font=("Arial", 16, "bold italic"), padx=20, pady=40)
+	Tayuda.insert(END, "Acerca de...")
+	Tayuda.grid(row=1, column=0, sticky=W)
+	Tayuda.config(state=DISABLED)
+	Tayuda2=Text(ayuda, height=100, width=40, fg="black", bg="white", bd=0, font=("Arial", 10), padx=20)
+	Tayuda2.insert(END, "En caso de no obtener un resultado al dar clic sobre el boton 'Calcular', verifique haber introducido un  caracter vádilo ó número.")
+	Tayuda2.grid(row=2, column=0, sticky=W)
+	Tayuda2.config(state=DISABLED)
+
+###Pestañas de barra de herramientas
+barraMenu.add_cascade(label="Actividades", menu=mnuact)
+barraMenu.add_command(label="Limpiar", command=ayuda)
+barraMenu.add_command(label="Instrucciones", command=ayuda)
+barraMenu.add_command(label="Cerrar", command=bloque1.quit)
+bloque1.config(menu=barraMenu)
+
+###Actividades del bloque1
+mnuact.add_command(label="7.2 Principio de la suma", command=tem1)
+mnuact.add_command(label="7.3 Principio de la multiplicación", command=mnuact)
+mnuact.add_command(label="7.4 Principio de la combinación", command=mnuact)
+mnuact.add_command(label="7.5 Principio de la permutación", command=mnuact)
+mnuact.add_command(label="7.6 Aplicaciones de la regla de la suma y regla de la multiplicaciión en probabilidad básica", command=mnuact)
+
+bloque1.mainloop()
