@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
@@ -5,174 +6,102 @@ import os
 import math
 
 
-bloque2=Tk() #crear ventana
+bloque4=Tk() #crear ventana
 
-bloque2.title("Bloque 2") #Nombre del bloque
-bloque2.geometry("450x300")
-bloque2.config(bg="#1C1C1C")
+bloque4.title("Bloque 4") #Nombre del bloque
+bloque4.geometry("450x300")
+bloque4.config(bg="#1C1C1C")
 
 #Aqui va todo el codigo
 
-
-T1=Text(bloque2, height=1, width=15, fg="#DEDEDE", bg="#1C1C1C", bd=0, font=("Trebuchet", 18, "bold"), padx=180, pady=10)
-T1.insert(END, "Bloque 2")
+T1=Text(bloque4, height=1, width=15, fg="#DEDEDE", bg="#1C1C1C", bd=0, font=("Trebuchet", 18, "bold"), padx=180, pady=10)
+T1.insert(END, "Bloque 4")
 T1.grid(row=1, column=0, sticky=W)
 T1.config(state=DISABLED)
 
-T2=Text(bloque2, height=1, width=30, fg="#DEDEDE", bg="#1C1C1C", bd=0, font=("Trebuchet", 18, "bold"), padx=50, pady=0)
-T2.insert(END, "Medidas de tendencia central")
+T2=Text(bloque4, height=1, width=30, fg="#DEDEDE", bg="#1C1C1C", bd=0, font=("Trebuchet", 18, "bold"), padx=135, pady=0)
+T2.insert(END, "Medidas de Forma")
 T2.grid(row=2, column=0, sticky=W)
 T2.config(state=DISABLED)
 
-barraMenu=Menu(bloque2) #barra de menu
+barraMenu=Menu(bloque4) #barra de menu
 mnuTemas=Menu(barraMenu) #menus
 mnuAyuda=Menu(barraMenu)
 mnuCerrar=Menu(barraMenu)
-
-def limpiar():
+def limpiar ():
     limpiar=T1.destroy()
     limpiar=T2.destroy()
-    
-def interfazMedArit():
+def sesgo ():
+    limpiar()
+    a=StringVar()
+    b=StringVar()
+    c=StringVar()
+    d=StringVar()
+    e=StringVar()
+    def calcular1():
+        vara=a.get()
+        varb=b.get()
+        varc=c.get()
+        vard=d.get()
+        vare=e.get()
+        dato1=float(vara)
+        dato2=float(varb)
+        dato3=float(varc)
+        dato4=float(vard)
+        dato5=float(vare)
+        prom=(dato1+dato2+dato3+dato4+dato5)/5
+        suma=((dato1-prom)**3)+((dato2-prom)**3)+((dato3-prom)**3)+((dato4-prom)**3)+((dato5-prom)**3)
+        operacion=(((dato1-prom)**2)+((dato2-prom)**2)+((dato3-prom)**2)+((dato4-prom)**2)+((dato5-prom)**2))/4
+        desviacion=math.pow(operacion,1/2)
+        sesgo = (5/((5-1)*(5-2))*(suma/(desviacion**3)))
+        labelresultado=Label(text=sesgo, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
+        return
+    lbl=Label(bloque4, text="Sesgo o Skewness",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=10).pack()
+    lbl1=Label(bloque4, text="Ingresa 5 datos numéricos:", fg="white", bg="#1C1C1C", bd=15, font=("Arial", 12)).pack()
+    dato1=Entry(textvariable = a, width=25).pack()
+    dato2=Entry(textvariable = b, width=25).pack()
+    dato3=Entry(textvariable = c, width=25).pack()
+    dato4=Entry(textvariable = d, width=25).pack()
+    dato5=Entry(textvariable = e, width=25).pack()
+    calcular=Button(text="Calcular", font=("Arial", 10), command=calcular1).pack()
+
+def curtosis ():
             limpiar()
             a=StringVar()
             b=StringVar()
             c=StringVar()
             d=StringVar()
             e=StringVar()
-            def calcular1():
+            def calcular2():
                     vara=a.get()
                     varb=b.get()
                     varc=c.get()
                     vard=d.get()
                     vare=e.get()
-                    dato1=int(vara)
-                    dato2=int(varb)
-                    dato3=int(varc)
-                    dato4=int(vard)
-                    dato5=int(vare)
-                    resultado=(dato1+dato2+dato3+dato4+dato5)/5
-                    labelresultado=Label(text=resultado, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
+                    dato1=float(vara)
+                    dato2=float(varb)
+                    dato3=float(varc)
+                    dato4=float(vard)
+                    dato5=float(vare)
+                    prom=(dato1+dato2+dato3+dato4+dato5)/5
+                    suma=((dato1-prom)**4)+((dato2-prom)**4)+((dato3-prom)**4)+((dato4-prom)**4)+((dato5-prom)**4)
+                    operacion=(((dato1-prom)**2)+((dato2-prom)**2)+((dato3-prom)**2)+((dato4-prom)**2)+((dato5-prom)**2))/4
+                    desviacion=math.pow(operacion,1/2)
+                    curtosis = (5*(5-1)/((5-1)*(5-2)*(5-3))*(suma/(desviacion**4)))
+                    labelresultado=Label(text=curtosis, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
                     return
-            lbl=Label(bloque2, text="Media Aritmética",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=10).pack()
-            lbl1=Label(bloque2, text="Ingresa 5 datos numéricos:", fg="white", bg="#1C1C1C", bd=15, font=("Arial", 12)).pack()
+            lbl=Label(bloque4, text="Apuntamiento o Curtosis",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=10).pack()
+            lbl1=Label(bloque4, text="Ingresa 5 datos numéricos:", fg="white", bg="#1C1C1C", bd=15, font=("Arial", 12)).pack()
             dato1=Entry(textvariable = a, width=25).pack()
             dato2=Entry(textvariable = b, width=25).pack()
             dato3=Entry(textvariable = c, width=25).pack()
             dato4=Entry(textvariable = d, width=25).pack()
             dato5=Entry(textvariable = e, width=25).pack()
-            calcular=Button(text="Calcular", font=("Arial", 10), command=calcular1).pack()
-def interfazMediana ():
-    limpiar()
-    a=StringVar()
-    b=StringVar()
-    c=StringVar()
-    d=StringVar()
-    e=StringVar()
-    def calcular2():
-            vara=a.get()
-            varb=b.get()
-            varc=c.get()
-            vard=d.get()
-            vare=e.get()
-            dato1=int(vara)
-            dato2=int(varb)
-            dato3=int(varc)
-            dato4=int(vard)
-            dato5=int(vare)
-            list=(dato1,dato2,dato3,dato4,dato5)
-            orden=sorted(list)
-            resultado=orden[2]
-            labelresultado=Label(text=resultado, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
-            return
+            calcular=Button(text="Calcular", font=("Arial", 10), command=calcular2).pack()
 
-    lbl=Label(bloque2, text="Mediana",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=10).pack()
-    lbl2=Label(bloque2, text="Ingresa 5 números",fg="white", bg="#1C1C1C",font=("Arial", 12), bd=15).pack()
-    num1= Entry(bloque2,textvariable = a, width=15).pack()
-    num2= Entry(bloque2,textvariable = b, width=15).pack()
-    num3= Entry(bloque2,textvariable = c, width=15).pack()
-    num4= Entry(bloque2,textvariable = d, width=15).pack()
-    num5= Entry(bloque2,textvariable = e, width=15).pack()
-    calcular=Button(text="Calcular", font=("Arial", 10), command=calcular2).pack()
+mnuTemas.add_command(label="Sesgo o Skewness", command=sesgo)
+mnuTemas.add_command(label="Apuntamiento o Curtosis", command=curtosis)
 
-    
-def interfazModa ():
-    limpiar()
-   
-    
-def interfazMedGeo():
-    limpiar()
-    a=StringVar()
-    b=StringVar()
-    c=StringVar()
-    d=StringVar()
-    e=StringVar()
-    def calcular4():
-            vara=a.get()
-            varb=b.get()
-            varc=c.get()
-            vard=d.get()
-            vare=e.get()
-            dato1=int(vara)
-            dato2=int(varb)
-            dato3=int(varc)
-            dato4=int(vard)
-            dato5=int(vare)
-            multi=(dato1*dato2*dato3*dato4*dato5)
-            geo = math.pow(multi,1/5)
-        
-            labelresultado=Label(text=geo, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
-            return
-
-    lbl=Label(bloque2, text="Media Geometrica",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=10).pack()
-    lbl2=Label(bloque2, text="Ingresa 5 datos numéricos",fg="white", bg="#1C1C1C",font=("Arial", 12), bd=15).pack()
-    num1= Entry(bloque2,textvariable = a, width=15).pack()
-    num2= Entry(bloque2,textvariable = b, width=15).pack()
-    num3= Entry(bloque2,textvariable = c, width=15).pack()
-    num4= Entry(bloque2,textvariable = d, width=15).pack()
-    num5= Entry(bloque2,textvariable = e, width=15).pack()
-    calcular=Button(text="Calcular", font=("Arial", 10), command=calcular4).pack()
-    
-def interfazMedArm():
-    limpiar()
-    a=StringVar()
-    b=StringVar()
-    c=StringVar()
-    d=StringVar()
-    e=StringVar()
-    def calcular5():
-            vara=a.get()
-            varb=b.get()
-            varc=c.get()
-            vard=d.get()
-            vare=e.get()
-            dato1=int(vara)
-            dato2=int(varb)
-            dato3=int(varc)
-            dato4=int(vard)
-            dato5=int(vare)
-            
-            suma=((1/dato1)+(1/dato2)+(1/dato3)+(1/dato4)+(1/dato5))
-
-            aro = 5/suma
-        
-            labelresultado=Label(text=aro, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
-            return
-
-    lbl=Label(bloque2, text="Media Armónica",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=10).pack()
-    lbl2=Label(bloque2, text="Ingresa 5 datos numéricos",fg="white", bg="#1C1C1C",font=("Arial", 12), bd=15).pack()
-    num1= Entry(bloque2,textvariable = a, width=15).pack()
-    num2= Entry(bloque2,textvariable = b, width=15).pack()
-    num3= Entry(bloque2,textvariable = c, width=15).pack()
-    num4= Entry(bloque2,textvariable = d, width=15).pack()
-    num5= Entry(bloque2,textvariable = e, width=15).pack()
-    calcular=Button(text="Calcular", font=("Arial", 10), command=calcular5).pack()
-    
-mnuTemas.add_command(label="Media Aritmética", command=interfazMedArit)
-mnuTemas.add_command(label="Moda", command=interfazModa)
-mnuTemas.add_command(label="Mediana", command=interfazMediana)
-mnuTemas.add_command(label="Media Geométrica", command=interfazMedGeo)
-mnuTemas.add_command(label="Media Armónica", command=interfazMedArm)
 
 def instrucciones ():
     instrucciones=Tk()
@@ -189,17 +118,15 @@ def instrucciones ():
     Tinst2.insert(END, "En caso de no obtener un resultado al dar clic \n sobre el botón 'Calcular', verifique haber introducido un  caractér vádilo ó número.")
     Tinst2.grid(row=2, column=0, sticky=W)
     Tinst2.config(state=DISABLED)
-    
 
 def cerrarVentana():
-    bloque2.withdraw()
+    bloque4.withdraw()
+    
 
 barraMenu.add_cascade(label="Temas", menu=mnuTemas)
 barraMenu.add_command(label="Limpiar", command=limpiar)
-barraMenu.add_command(label="Intrucciones", command=instrucciones)
+barraMenu.add_command(label="Instrucciones", command=instrucciones)
 barraMenu.add_command(label="Cerrar", command=cerrarVentana)
 
-
-bloque2.config(menu=barraMenu)
-
-bloque2.mainloop()
+bloque4.config(menu=barraMenu)
+bloque4.mainloop()
