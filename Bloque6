@@ -1,0 +1,99 @@
+# -*- coding: utf-8 -*- 
+from tkinter import *
+from tkinter import messagebox
+from tkinter import ttk
+import os
+import math
+
+bloque6=Tk() #crear ventana
+
+bloque6.title("Bloque 6") #Nombre del bloque
+bloque6.geometry("450x300")
+bloque6.config(bg="#1C1C1C")
+
+#Aqui va todo el codigo
+
+T1=Text(bloque6, height=1, width=15, fg="#DEDEDE", bg="#1C1C1C", bd=0, font=("Trebuchet", 18, "bold"), padx=180, pady=10)
+T1.insert(END, "Bloque 6")
+T1.grid(row=1, column=0, sticky=W)
+T1.config(state=DISABLED)
+
+T2=Text(bloque6, height=1, width=30, fg="#DEDEDE", bg="#1C1C1C", bd=0, font=("Trebuchet", 18, "bold"), padx=120, pady=0)
+T2.insert(END, "Teoría de conjuntos")
+T2.grid(row=2, column=0, sticky=W)
+T2.config(state=DISABLED)
+
+barraMenu=Menu(bloque6) #barra de menu
+mnuTemas=Menu(barraMenu) #menus
+mnuAyuda=Menu(barraMenu)
+mnuCerrar=Menu(barraMenu)
+def limpiar ():
+    limpiar=T1.destroy ()
+    limpiar=T2.destroy ()
+    
+def interfazProb():
+            limpiar()
+            n=StringVar()
+            p=StringVar()
+            q=StringVar()
+            r=StringVar()
+            
+            def calcular():
+                    varN=n.get()
+                    varP=p.get()
+                    varQ=q.get()
+                    varR=r.get()
+                
+                    datoN=float(varN)
+                    datoP=float(varP)
+                    datoQ=float(varQ)
+                    datoR=float(varR)
+                    factorialn = (math.factorial(datoN))
+                    factorialr = (math.factorial(datoR))
+                    factorialn_r=(math.factorial(datoN-datoR))
+                    resultado = ((factorialn/(factorialr*factorialn_r))*(datoP**datoR)*(datoQ**(datoN-datoR)))
+                    distribucion=(resultado*100,"%")
+                    
+            
+                    labelresultado=Label(text=distribucion, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
+                    return
+            lbl=Label(bloque6, text="Distribución de Probabilidad Binomial",fg="white", bg="#1C1C1C",font=("Arial", 18), bd=7).pack()
+            lbl1=Label(bloque6, text="Ingresa los datos requeridos en el siguiente orden", fg="white", bg="#1C1C1C", bd=7, font=("Arial", 12)).pack()
+            lbl=Label(bloque6, text="n=población o número de ensayos. \n  p=probabilidad de éxito. \n q=probabilidad de fracaso. \n r=número de éxito buscado. \n ",fg="white", bg="#1C1C1C",font=("Arial", 9), bd=5).pack()
+            
+            dato1=Entry(textvariable = n, width=25).pack()
+            dato2=Entry(textvariable = p, width=25).pack()
+            dato3=Entry(textvariable = q, width=25).pack()
+            dato4=Entry(textvariable = r, width=25).pack()
+            
+            calcular=Button(text="Calcular", font=("Arial", 10), command=calcular).pack()
+
+mnuTemas.add_command(label="Distribución de Probabilidad Binomial", command=interfazProb)
+def instrucciones ():
+    instrucciones=Tk()
+    instrucciones.title("Instrucciones")
+    instrucciones.geometry("330x320")
+    instrucciones.resizable(0,0)
+    instrucciones.config(bg="white")
+    instrucciones.iconbitmap("../imagenes/icon.ico")
+    Tinst=Text(instrucciones, height=1, width=10, fg="black", bg="white", bd=0, font=("Arial", 16, "bold italic"), padx=20, pady=40)
+    Tinst.insert(END, "Acerca de...")
+    Tinst.grid(row=1, column=0, sticky=W)
+    Tinst.config(state=DISABLED)
+    Tinst2=Text(instrucciones, height=100, width=40, fg="black", bg="white", bd=0, font=("Arial", 10), padx=20)
+    Tinst2.insert(END, "En caso de no obtener un resultado al dar clic \n sobre el botón 'Calcular', verifique haber introducido un  caractér vádilo ó número.")
+    Tinst2.grid(row=2, column=0, sticky=W)
+    Tinst2.config(state=DISABLED)
+
+def cerrarVentana():
+    bloque6.withdraw()
+
+barraMenu.add_cascade(label="Temas", menu=mnuTemas)
+barraMenu.add_command(label="Limpiar", command=limpiar)
+barraMenu.add_command(label="Instrucciones", command=instrucciones)
+barraMenu.add_command(label="Cerrar", command=cerrarVentana)
+
+
+bloque6.config(menu=barraMenu)
+
+bloque6.mainloop()
