@@ -4,7 +4,6 @@ from tkinter import ttk
 import os
 import math
 
-
 bloque2=Tk() #crear ventana
 
 bloque2.title("Bloque 2") #Nombre del bloque
@@ -12,7 +11,6 @@ bloque2.geometry("450x300")
 bloque2.config(bg="#1C1C1C")
 
 #Aqui va todo el codigo
-
 
 T1=Text(bloque2, height=1, width=15, fg="#DEDEDE", bg="#1C1C1C", bd=0, font=("Trebuchet", 18, "bold"), padx=180, pady=10)
 T1.insert(END, "Bloque 2")
@@ -46,11 +44,11 @@ def interfazMedArit():
                     varc=c.get()
                     vard=d.get()
                     vare=e.get()
-                    dato1=int(vara)
-                    dato2=int(varb)
-                    dato3=int(varc)
-                    dato4=int(vard)
-                    dato5=int(vare)
+                    dato1=float(vara)
+                    dato2=float(varb)
+                    dato3=float(varc)
+                    dato4=float(vard)
+                    dato5=float(vare)
                     resultado=(dato1+dato2+dato3+dato4+dato5)/5
                     labelresultado=Label(text=resultado, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 12)).pack()
                     return
@@ -62,6 +60,7 @@ def interfazMedArit():
             dato4=Entry(textvariable = d, width=25).pack()
             dato5=Entry(textvariable = e, width=25).pack()
             calcular=Button(text="Calcular", font=("Arial", 10), command=calcular1).pack()
+            
 def interfazMediana ():
     limpiar()
     a=StringVar()
@@ -75,11 +74,11 @@ def interfazMediana ():
             varc=c.get()
             vard=d.get()
             vare=e.get()
-            dato1=int(vara)
-            dato2=int(varb)
-            dato3=int(varc)
-            dato4=int(vard)
-            dato5=int(vare)
+            dato1=float(vara)
+            dato2=float(varb)
+            dato3=float(varc)
+            dato4=float(vard)
+            dato5=float(vare)
             list=(dato1,dato2,dato3,dato4,dato5)
             orden=sorted(list)
             resultado=orden[2]
@@ -113,11 +112,11 @@ def interfazMedGeo():
             varc=c.get()
             vard=d.get()
             vare=e.get()
-            dato1=int(vara)
-            dato2=int(varb)
-            dato3=int(varc)
-            dato4=int(vard)
-            dato5=int(vare)
+            dato1=float(vara)
+            dato2=float(varb)
+            dato3=float(varc)
+            dato4=float(vard)
+            dato5=float(vare)
             multi=(dato1*dato2*dato3*dato4*dato5)
             geo = math.pow(multi,1/5)
         
@@ -146,11 +145,11 @@ def interfazMedArm():
             varc=c.get()
             vard=d.get()
             vare=e.get()
-            dato1=int(vara)
-            dato2=int(varb)
-            dato3=int(varc)
-            dato4=int(vard)
-            dato5=int(vare)
+            dato1=float(vara)
+            dato2=float(varb)
+            dato3=float(varc)
+            dato4=float(vard)
+            dato5=float(vare)
             
             suma=((1/dato1)+(1/dato2)+(1/dato3)+(1/dato4)+(1/dato5))
 
@@ -189,7 +188,6 @@ def instrucciones ():
     Tinst2.insert(END, "En caso de no obtener un resultado al dar clic \n sobre el botón 'Calcular', verifique haber introducido un  caractér vádilo ó número.")
     Tinst2.grid(row=2, column=0, sticky=W)
     Tinst2.config(state=DISABLED)
-    
 
 def cerrarVentana():
     bloque2.withdraw()
