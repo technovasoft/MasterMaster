@@ -1,7 +1,7 @@
 from tkinter import * #libreria bonisz :3
 from tkinter import messagebox #libreria para todos los messageBox
 from tkinter import ttk #Libreria para barra de progreso(cargando)
-import os #Libreria para comandos del sistema (linux, macx, windios)
+import os #Libreria para comandos del sistema
 
 root=Tk() #crear ventana
 
@@ -15,7 +15,7 @@ def ejecutar(f):
 
 v1=Toplevel(root)
 v1.title("BeeSoft")
-v1.geometry("500x270") #450x180 
+v1.geometry("500x275") #450x180 
 v1.config(bg="#1C1C1C")
 bit=v1.iconbitmap('imagenes/icon.ico')
 v1.protocol("WM_DELETE_WINDOW", "onexit")
@@ -40,18 +40,13 @@ root.geometry("930x520") #tamaño de la ventana o 720x480
 root.config(bg="#1C1C1C") #color principal #2E2E2E  #D8D8D8  #1C1C1C
 bit=root.iconbitmap('imagenes/icon.ico') #icono del programa
 
-textintro=Text(root, height=1, width=36, fg="white", bg="#1C1C1C", bd=0, font=("Arial", 22, "bold"), padx=20, pady=40)
-textintro.insert(END, "¡Disponible próximamente para Android!")
-textintro.pack(side="top")
-textintro.config(state=DISABLED)
-android=PhotoImage(file="imagenes/phone.png")
-android2=Label(root, image=android, bg="#1C1C1C")
-android2.pack()
+index=PhotoImage(file="imagenes/index.png")
+index2=Label(root, image=index, bg="#1C1C1C")
+index2.place(relx=1, rely=1, anchor=CENTER)
 
 barraMenu=Menu(root) #barra de menu
 mnuInicio=Menu(barraMenu) #menus
 mnuIndice=Menu(barraMenu)
-mnuIndice_1=Menu(mnuIndice)
 mnuActiv=Menu(barraMenu)
 mnuAyuda=Menu(barraMenu)
 
@@ -60,8 +55,7 @@ mnuAyuda=Menu(barraMenu)
 ####  Incio
 def Intro():
 	
-	textintro.pack_forget()
-	android2.pack_forget()  ##elimina lo anterior en la pantalla
+	index2.pack_forget()  ##elimina lo anterior en la pantalla
     
 	T=Text(root, height=1, width=12, fg="#FFBF00", bg="#1C1C1C", bd=0, font=("Arial", 20, "bold"), padx=20, pady=40)
 	T.insert(END, "Introducción")
@@ -79,7 +73,7 @@ def Intro():
 	T1.config(state=DISABLED)
 
 def informacion():
-	messagebox.showinfo("Información", "Software desarrollado por TechnovaSoft.® 2015\n  •Base de datos:\n    Ernesto Ruíz\n    Alejandro Parra\n  •Interfaz gráfica:\n    Mauicio Reyes\n    Azael Rodríguez\n    Karen Ortiz\n  •Algoritmia:\n    César Rivera\n    Carlos Hernandez\n    Jorge Salinas")
+	messagebox.showinfo("Información", "Software desarrollado por TechnovaSoft.® 2015\n  •Base de datos:\n    Ernesto Ruíz\n    Alejandro Parra\n  •Interfaz gráfica:\n    Mauicio Reyes\n    Azael Rodríguez\n    Karen Ortiz\n  •Algoritmia:\n    César Rivera\n    Jorge Salinas")
 
 mnuInicio.add_command(label="Introducción", command=Intro)
 mnuInicio.add_command(label="Información", command=informacion)
@@ -97,20 +91,32 @@ mnuIndice.add_command(label="8 - Probabilidad para eventos")
 
 ###Funciones de las acciones en cada botón.
 def bloque1():
-	os.startfile("algoritmia-master\Bloque1.py") ###"os.startfile()"" inicializa y ejecuta el archivo especifícado.
+	os.startfile("algoritmia\Bloque1.py")
 def bloque2():
-	os.startfile("algoritmia-master\Bloque2.py") ###Éste no sé porque no lo abre.
-###NOTA: Dentro de los paréntesis poner la dirección de donde están almacenados cada uno de los Bloques.
+	os.startfile("algoritmia\Bloque2.py")
+def bloque3():
+	os.startfile("algoritmia\Bloque3.py")
+def bloque4():
+	os.startfile("algoritmia\Bloque4.py")
+def bloque5():
+	os.startfile("algoritmia\Bloque5.py")
+def bloque6():
+	os.startfile("algoritmia\Bloque6.py")
+def bloque7():
+	os.startfile("algoritmia\Bloque7.py")
+def bloque8():
+	os.startfile("algoritmia\Bloque8.py")
 
 ####  Actividades
-mnuActiv.add_command(label="Bloque 1",command=bloque1)
-mnuActiv.add_command(label="Bloque 2",command=bloque2)
-mnuActiv.add_command(label="Bloque 3")
-mnuActiv.add_command(label="Bloque 4")
-mnuActiv.add_command(label="Bloque 5")
-mnuActiv.add_command(label="Bloque 6")
-mnuActiv.add_command(label="Bloque 7")
-mnuActiv.add_command(label="Bloque 8")
+mnuActiv.add_command(label="Bloque 1", command=bloque1)
+mnuActiv.add_command(label="Bloque 2", command=bloque2)
+mnuActiv.add_command(label="Bloque 3", command=bloque3)
+mnuActiv.add_command(label="Bloque 4", command=bloque4)
+mnuActiv.add_command(label="Bloque 5", command=bloque5)
+mnuActiv.add_command(label="Bloque 6", command=bloque6)
+mnuActiv.add_command(label="Bloque 7", command=bloque7)
+mnuActiv.add_command(label="Bloque 8", command=bloque8)
+
 ####  Ayuda
 def Ayuda():
 	ayuda=Tk()
@@ -124,12 +130,13 @@ def Ayuda():
 	Tayuda.grid(row=1, column=0, sticky=W)
 	Tayuda.config(state=DISABLED)
 	Tayuda2=Text(ayuda, height=100, width=40, fg="black", bg="white", bd=0, font=("Arial", 10), padx=20)
-	Tayuda2.insert(END, "BeeSoft v. 1.0 BETA es software libre para los sistemas operativos Windows, MacOS, y Linux. \n\n•Requerimientos mínimos:\n512 Mbs. de memoria RAM, \
-	30 Mbs. de espacio en disco duro, procesador Intel Pentium 4 o versiones posteriores; \n-Mac OS X 10.6 o posterior; \n-Ubuntu 12.04, Fedora Linux 20 o posteriores;\
-	\n-Windows 7 O posterior. \n\n•Resultados: \nCuando se ingresan datos dentro de las cajas de texto y arroja un resultado erroneo o no arroja un resultado es \
+	Tayuda2.insert(END, "BeeSoft v. 1.0 BETA es software libre para los sistemas operativos Windows, MacOS, Linux y Solaris. \n\n•Requerimientos mínimos:\n32Gb de memoria RAM, \
+	5 Tbs. de espacio en disco duro, procesador Intel Xeon E5 64 nucleos, 3 monitores 8K sincronizados, Internet LiFi 1024 mbps de velocidad; \n-Mac OS X 10.6 o posterior; \n-Ubuntu 12.04, Fedora Linux 20 o posteriores;\
+	\n-Windows 7 o posterior. \n\n•Resultados: \nCuando se ingresan datos dentro de las cajas de texto y arroja un resultado erroneo o no arroja un resultado es \
 	necesario verificar que se haya ingresado un dato válido, si persiste el problema, reinstale el software.\n\n¡Gracias por usar BeeSoft! :)")
 	Tayuda2.grid(row=2, column=0, sticky=W)
 	Tayuda2.config(state=DISABLED)
+
 
 mnuAyuda.add_command(label="Ver Ayuda", command=Ayuda)
 ####
